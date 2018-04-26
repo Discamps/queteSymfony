@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Plainemodels list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Model</th>
+                <th>Manufacturer</th>
+                <th>Cruisespeed</th>
+                <th>Plainenbseats</th>
+                <th>Isavailable</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plaineModel in plaineModels %}
+            <tr>
+                <td><a href="{{ path('plainemodel_show', { 'id': plaineModel.id }) }}">{{ plaineModel.id }}</a></td>
+                <td>{{ plaineModel.model }}</td>
+                <td>{{ plaineModel.manufacturer }}</td>
+                <td>{{ plaineModel.cruiseSpeed }}</td>
+                <td>{{ plaineModel.plaineNbSeats }}</td>
+                <td>{% if plaineModel.isAvailable %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('plainemodel_show', { 'id': plaineModel.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('plainemodel_edit', { 'id': plaineModel.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('plainemodel_new') }}">Create a new plaineModel</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Plainemodel</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ plaineModel.id }}</td>
+            </tr>
+            <tr>
+                <th>Model</th>
+                <td>{{ plaineModel.model }}</td>
+            </tr>
+            <tr>
+                <th>Manufacturer</th>
+                <td>{{ plaineModel.manufacturer }}</td>
+            </tr>
+            <tr>
+                <th>Cruisespeed</th>
+                <td>{{ plaineModel.cruiseSpeed }}</td>
+            </tr>
+            <tr>
+                <th>Plainenbseats</th>
+                <td>{{ plaineModel.plaineNbSeats }}</td>
+            </tr>
+            <tr>
+                <th>Isavailable</th>
+                <td>{% if plaineModel.isAvailable %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('plainemodel_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('plainemodel_edit', { 'id': plaineModel.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
